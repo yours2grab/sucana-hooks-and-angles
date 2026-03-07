@@ -7,7 +7,7 @@ description: "Ad Flywheel product and market research. Deep-dives into a product
 
 ## Rules
 
-- All paths use `{WORKSPACE}` as shorthand for the ad-flywheel working directory
+- `{WORKSPACE}` = the directory containing the `ad-flywheel/` folder. Search current directory first, then `~/ad-flywheel/`, `~/Program/ad-flywheel/`.
 - Use WebSearch for product details, competitors, and market data
 - Research must be ACTIONABLE for ad creation — not a general market report
 - Focus on emotional triggers, objections, and language the audience actually uses

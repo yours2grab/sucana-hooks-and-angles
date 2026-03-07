@@ -7,7 +7,7 @@ description: "Ad Flywheel performance tracking and flywheel engine. Imports Meta
 
 ## Rules
 
-- All paths use `{WORKSPACE}` as shorthand for the ad-flywheel working directory
+- `{WORKSPACE}` = the directory containing the `ad-flywheel/` folder. Search current directory first, then `~/ad-flywheel/`, `~/Program/ad-flywheel/`.
 - NEVER modify the playbook without explicit user approval
 - Handle CSV column name variations gracefully (Meta exports aren't always consistent)
 - When identifying winners, use the agency's own performance rules from playbook
@@ -43,7 +43,7 @@ Read the CSV file. Identify these columns (handle common variations):
 | Impressions | Impressions, impressions |
 | Clicks | Link clicks, Clicks (all), clicks |
 | CTR | CTR (link click-through rate), CTR (all), ctr |
-| CPC | Cost per result, CPC (cost per link click), cpc |
+| CPC | CPC (cost per link click), CPC (all), cpc |
 | Conversions | Results, Purchases, Leads, conversions |
 | ROAS | Purchase ROAS, Website purchase ROAS, roas |
 | Spend | Amount spent, Spend, spend |
@@ -58,10 +58,10 @@ Parse the CSV data. For each ad, extract all available metrics.
 Calculate summary stats:
 - Total spend
 - Total conversions
-- Average ROAS / CPC / CTR
+- Weighted average ROAS (total revenue / total spend), simple average CPC, simple average CTR
 - Best performing ad (by ROAS)
 - Worst performing ad (by ROAS)
-- Spend distribution (how much went to winners vs losers)
+- Spend distribution: top 3 ads by spend vs bottom 3 (no winner/loser labels yet — winner classification happens in Mode B)
 
 ### Step A4: Match to Scripts
 
@@ -124,15 +124,16 @@ Show: "Data imported. Run 'flywheel' or /ad-performance with 'winning ads' to ex
 
 1. Read `{WORKSPACE}/ad-flywheel/config/playbook.md` — for performance goals
 2. Read ALL `products/*/performance/metrics.md` files
-3. Read ALL `products/*/scripts/` to match winners to their scripts
-4. Read ALL `products/*/angles.md` to match winners to their angles
+3. Read ALL `products/*/scripts/` to match winners to their scripts — if no scripts exist yet, that's fine. Match what you can by ad name patterns.
+4. Read ALL `products/*/angles.md` to match winners to their angles — if no angles exist yet, infer angle type from ad name and content patterns instead.
 
 ### Step B2: Identify Winners
 
 Use the agency's performance rules from playbook to define "winning":
 - If playbook specifies ROAS target → winners are ads above that threshold
 - If playbook specifies CPA target → winners are ads below that threshold
-- If no specific rules → default to top 10% by ROAS
+- If no specific rules → default to top 20% by ROAS (or top 3 ads, whichever is more)
+- **Minimum spend filter:** Exclude ads with fewer than 5,000 impressions from winner consideration (not enough data to be meaningful)
 
 List all winning ads with their metrics.
 

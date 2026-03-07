@@ -7,28 +7,32 @@ description: "Ad Flywheel angle and hook generator. Generates 5-8 ad angles with
 
 ## Rules
 
-- All paths use `{WORKSPACE}` as shorthand for the ad-flywheel working directory
+- `{WORKSPACE}` = the directory containing the `ad-flywheel/` folder. Search current directory first, then `~/ad-flywheel/`, `~/Program/ad-flywheel/`.
 - ALWAYS load playbook before generating (fail gracefully if no playbook exists — use defaults)
 - Generate 5-8 angles per product (never fewer than 5)
 - Each angle must target a SPECIFIC micro-avatar, not a generic audience
 - Hooks must grab attention in the FIRST SECOND — be specific, not clever
 - NEVER generate generic angles like "highlight product benefits" — every angle needs a sharp point of view
 
+## MANDATORY Reading (Before Doing ANYTHING)
+
+You MUST read these reference files IN ORDER before generating angles:
+1. `references/hook-patterns.md` — 7 core hook pattern types
+2. `references/emotional-triggers.md` — emotional levers and cognitive biases catalog
+3. `references/dr-techniques.md` — direct response frameworks and testing hierarchy
+
 ## Step 0: Load Context
 
 1. Read `{WORKSPACE}/ad-flywheel/config/playbook.md` — the agency's context
    - If no playbook exists, ask: "No playbook found. Want to describe your product and audience, or run /ad-setup first?"
-2. Read `{WORKSPACE}/ad-flywheel/winning-ads/patterns.md` — if it exists, these are PROVEN patterns from past winners. Weight them heavily.
-3. Read `{WORKSPACE}/ad-flywheel/products/{slug}/research.md` — if it exists for this product, use it as primary context.
-
-Load these reference files:
-- `references/hook-patterns.md` — 7 core hook pattern types
-- `references/emotional-triggers.md` — emotional levers and cognitive biases catalog
-- `references/dr-techniques.md` — direct response frameworks and testing hierarchy
+2. Read `{WORKSPACE}/ad-flywheel/winning-ads/patterns.md` — if it exists AND has content beyond the header, these are PROVEN patterns from past winners. Weight them heavily. If the file is empty or only has a header with no patterns listed, skip it silently — this just means no flywheel data exists yet. Do NOT mention its absence to the user.
+3. Read `{WORKSPACE}/ad-flywheel/products/{slug}/research.md` — if it exists for this product, use it as primary context. If no research.md exists, that's fine — use the playbook context + whatever the user provides about the product. You do NOT need research.md to generate angles.
 
 ## Step 1: Identify the Product
 
-Ask the user: "What product are you generating angles for?"
+If the user already named the product in their prompt (e.g., "generate angles for FitTrack Pro"), use that directly — don't re-ask.
+
+Otherwise, ask: "What product are you generating angles for?"
 
 - If they name an existing product (check `products/` directory), load its research
 - If it's a new product, ask for a brief description (even 1-2 sentences works)

@@ -7,20 +7,21 @@ description: "Ad Flywheel onboarding and context enrichment. Sets up the workspa
 
 ## Rules
 
-- All paths use `{WORKSPACE}` as shorthand for the ad-flywheel working directory
-- On FIRST RUN: create directory structure + run questionnaire + ingest docs
+- `{WORKSPACE}` = the current working directory. The `ad-flywheel/` folder is created inside it.
+- IMPORTANT: If the current directory is already named `ad-flywheel/`, do NOT nest another `ad-flywheel/` inside it. Use the current directory as the workspace root directly.
+- On FIRST RUN: create directory structure, run questionnaire, ingest docs, show config for approval, then save
 - On SUBSEQUENT RUNS: detect existing config, offer context enrichment mode
 - NEVER overwrite existing playbook — always APPEND new context
-- Show all generated config to user for approval before saving
+- Generate all config content in memory first. Show to user for review. Only write files AFTER user approves.
 
 ## Step 0: Detect Existing Setup
 
-Check if `{WORKSPACE}/ad-flywheel/config/playbook.md` exists.
+Check if the current directory IS `ad-flywheel/` (contains `config/` subdirectory or is named `ad-flywheel`). If so, use it as the workspace root — do NOT create a nested `ad-flywheel/` inside it.
 
-- **If NO config exists** → proceed to Step 1 (First Run)
-- **If config exists** → skip to Step 5 (Context Enrichment Mode)
+Otherwise, search for an existing `ad-flywheel/config/playbook.md` — first check current directory, then `~/ad-flywheel/`, `~/Program/ad-flywheel/`.
 
-Ask the user where they want the workspace. Default: current working directory. Create the path and store it.
+- **If NO config exists** → ask: "Where do you want the ad-flywheel workspace? Default: current directory." Then proceed to Step 1.
+- **If config exists** → set `{WORKSPACE}` to the parent of the found `ad-flywheel/` dir. Skip to Step 5 (Context Enrichment Mode).
 
 ## Step 1: Create Directory Structure
 
@@ -54,6 +55,10 @@ Initialize `flywheel-state.md` with empty dashboard:
 | Date | Patterns Found | Fed Into | Approved |
 |------|---------------|----------|----------|
 ```
+
+Initialize empty placeholder files:
+- `winning-ads/winners-library.md` — with header `# Winning Ads Library` and empty content
+- `winning-ads/patterns.md` — with header `# Winning Ad Patterns` and empty content
 
 ## Step 2: Quick Questionnaire (~5 min)
 
@@ -177,7 +182,7 @@ If user described a naming convention, save to `config/naming-convention.md`:
 {generate 2-3 examples based on their format}
 ```
 
-If user skipped, create a default:
+If user skipped, create a default using the actual brand/product name from the questionnaire:
 ```markdown
 # Ad Naming Convention
 
@@ -185,11 +190,13 @@ If user skipped, create a default:
 `{Product}_{AwarenessLevel}_{Angle#}_{Hook#}_{Length}_{Format}`
 
 ## Examples
-- `SkinSerum_AW3_A1_H2_30s_UGC`
-- `FitnessPlan_AW2_A3_H1_60s_TalkingHead`
+- `{BrandProduct}_AW3_A1_H2_30s_UGC`
+- `{BrandProduct}_AW2_A3_H1_60s_TalkingHead`
 
 _This is a default convention. Edit this file to customize._
 ```
+
+Replace `{BrandProduct}` with an abbreviated version of the actual product name from Q2 (e.g., "Advanced Skin Serum" → `SkinSerum`).
 
 ## HUMAN LOOP #1: Review Config
 
