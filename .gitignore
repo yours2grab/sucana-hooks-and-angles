@@ -1,0 +1,10 @@
+# Agency workspace data (generated during use)
+ad-flywheel/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
