@@ -40,20 +40,24 @@ This copies all skills to `~/.claude/skills/`. You can delete the downloaded fol
 
 ## Quick Start
 
-```
-/ad-setup          # One-time setup (~5 min questionnaire)
-/ad-research       # Research a product
-/ad-angles         # Generate hooks and angles
-/ad-scripts        # Write scripts from selected angles
-/ad-performance    # Import Meta data + run the flywheel
-```
+1. Open Claude Code in any folder (this is where your ad data will live)
+2. Type `ad setup` — answer 5 quick questions about your brand
+3. Type `ad angles` — get 5-8 ad angles with hooks for your product
+4. Type `ad scripts` — pick an angle, get a full production-ready script
 
-### Fastest path (skip research):
-```
-/ad-setup          # Setup
-/ad-angles         # Describe your product, get angles immediately
-/ad-scripts        # Pick an angle, get a script
-```
+That's it. You're generating ads.
+
+### All Commands
+
+| Command | What to type | What happens |
+|---------|-------------|-------------|
+| Setup | "ad setup" | 5-min onboarding questionnaire |
+| Research | "ad research" | Deep product/market research |
+| Angles | "ad angles" or "generate angles" | 5-8 angles with hooks |
+| Scripts | "ad scripts" or "write script" | Full timestamped scripts |
+| Performance | "ad performance" or "import ads" | Import CSV + run flywheel |
+
+You don't need to use slash commands — just type the trigger phrase naturally (e.g., "generate angles for my protein powder").
 
 ## Skills
 
@@ -107,7 +111,18 @@ See the `examples/` directory for:
 - `sample-playbook.md` — Example filled-out playbook
 - `sample-csv/` — Example Meta Ads Manager export for testing
 
+## Where Does My Data Go?
+
+All your data stays local in the folder where you ran `ad setup`. Nothing is uploaded, shared, or pushed anywhere. The `ad-flywheel/` folder in your working directory contains everything — your playbook, angles, scripts, and performance data.
+
+You can back it up, move it, or version-control it however you want.
+
 ## Requirements
 
-- [Claude Code](https://claude.com/claude-code) CLI
-- Claude API access (Opus or Sonnet)
+- [Claude Code](https://claude.com/claude-code) CLI installed
+- A Claude API key (works with Opus or Sonnet)
+- macOS or Linux (bash required for install script)
+
+## Credits
+
+Built by [Virgil Brewster](https://github.com/yours2grab). Ad methodology by Victor Chazarra.
