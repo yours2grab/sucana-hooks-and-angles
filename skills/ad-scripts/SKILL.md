@@ -14,15 +14,15 @@ description: "Ad Flywheel script generator. Writes full ad scripts with timestam
 - Visual direction must be actionable — a video editor should know exactly what to shoot
 - Default creative brief: shot list + visual notes. Full brief only when requested.
 
-## Step 0: Load Context
+## Step 0: Load Everything (ONE parallel read)
 
-1. Read `{WORKSPACE}/ad-flywheel/config/playbook.md` — agency context
-2. Read `{WORKSPACE}/ad-flywheel/config/naming-convention.md` — if it exists
-3. Read `{WORKSPACE}/ad-flywheel/products/{slug}/angles.md` — the angles to write from
-4. Read `{WORKSPACE}/ad-flywheel/products/{slug}/research.md` — if it exists, for audience depth
-5. Read `{WORKSPACE}/ad-flywheel/winning-ads/winners-library.md` — if it exists, for tone reference
-
-Load reference: `references/script-templates.md` — timing templates and output format
+Read ALL of the following files in a SINGLE parallel batch — do NOT read them one at a time:
+- `references/script-templates.md` — timing templates and output format
+- `{WORKSPACE}/ad-flywheel/config/playbook.md` — agency context
+- `{WORKSPACE}/ad-flywheel/config/naming-convention.md` — ad naming rules (if exists)
+- `{WORKSPACE}/ad-flywheel/products/{slug}/angles.md` — the angles to write from
+- `{WORKSPACE}/ad-flywheel/products/{slug}/research.md` — audience depth (if exists)
+- `{WORKSPACE}/ad-flywheel/winning-ads/winners-library.md` — tone reference (if exists)
 
 ## Step 1: Identify What to Write
 

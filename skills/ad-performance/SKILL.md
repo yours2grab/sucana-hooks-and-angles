@@ -24,10 +24,11 @@ Detect which mode based on user intent:
 
 ## MODE A: Import & Analyze
 
-### Step A1: Load Context
+### Step A1: Load Context (ONE parallel read)
 
-1. Read `{WORKSPACE}/ad-flywheel/config/playbook.md` — for performance rules
-2. Read `{WORKSPACE}/ad-flywheel/config/naming-convention.md` — for ad name matching
+Read BOTH files in a single parallel batch:
+- `{WORKSPACE}/ad-flywheel/config/playbook.md` — for performance rules
+- `{WORKSPACE}/ad-flywheel/config/naming-convention.md` — for ad name matching
 
 ### Step A2: Get CSV
 
@@ -120,12 +121,13 @@ Show: "Data imported. Run 'flywheel' or /ad-performance with 'winning ads' to ex
 
 ## MODE B: Flywheel — Extract Winning Patterns
 
-### Step B1: Load All Performance Data
+### Step B1: Load All Performance Data (ONE parallel read)
 
-1. Read `{WORKSPACE}/ad-flywheel/config/playbook.md` — for performance goals
-2. Read ALL `products/*/performance/metrics.md` files
-3. Read ALL `products/*/scripts/` to match winners to their scripts — if no scripts exist yet, that's fine. Match what you can by ad name patterns.
-4. Read ALL `products/*/angles.md` to match winners to their angles — if no angles exist yet, infer angle type from ad name and content patterns instead.
+Read ALL of these in a SINGLE parallel batch:
+- `{WORKSPACE}/ad-flywheel/config/playbook.md` — for performance goals
+- ALL `products/*/performance/metrics.md` files
+- ALL `products/*/scripts/*.md` — to match winners to scripts (if none exist, that's fine)
+- ALL `products/*/angles.md` — to match winners to angles (if none exist, infer from ad names)
 
 ### Step B2: Identify Winners
 

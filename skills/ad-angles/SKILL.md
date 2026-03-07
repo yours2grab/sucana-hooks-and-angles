@@ -14,19 +14,20 @@ description: "Ad Flywheel angle and hook generator. Generates 5-8 ad angles with
 - Hooks must grab attention in the FIRST SECOND — be specific, not clever
 - NEVER generate generic angles like "highlight product benefits" — every angle needs a sharp point of view
 
-## MANDATORY Reading (Before Doing ANYTHING)
+## Step 0: Load Everything (ONE parallel read)
 
-You MUST read these reference files IN ORDER before generating angles:
-1. `references/hook-patterns.md` — 7 core hook pattern types
-2. `references/emotional-triggers.md` — emotional levers and cognitive biases catalog
-3. `references/dr-techniques.md` — direct response frameworks and testing hierarchy
+Read ALL of the following files in a SINGLE parallel batch — do NOT read them one at a time:
+- `references/hook-patterns.md` — 7 core hook pattern types
+- `references/emotional-triggers.md` — emotional levers and cognitive biases catalog
+- `references/dr-techniques.md` — direct response frameworks and testing hierarchy
+- `{WORKSPACE}/ad-flywheel/config/playbook.md` — the agency's context
+- `{WORKSPACE}/ad-flywheel/winning-ads/patterns.md` — winning patterns (if exists)
+- `{WORKSPACE}/ad-flywheel/products/{slug}/research.md` — product research (if exists)
 
-## Step 0: Load Context
-
-1. Read `{WORKSPACE}/ad-flywheel/config/playbook.md` — the agency's context
-   - If no playbook exists, ask: "No playbook found. Want to describe your product and audience, or run /ad-setup first?"
-2. Read `{WORKSPACE}/ad-flywheel/winning-ads/patterns.md` — if it exists AND has content beyond the header, these are PROVEN patterns from past winners. Weight them heavily. If the file is empty or only has a header with no patterns listed, skip it silently — this just means no flywheel data exists yet. Do NOT mention its absence to the user.
-3. Read `{WORKSPACE}/ad-flywheel/products/{slug}/research.md` — if it exists for this product, use it as primary context. If no research.md exists, that's fine — use the playbook context + whatever the user provides about the product. You do NOT need research.md to generate angles.
+**After reading:**
+- If no playbook exists, ask: "No playbook found. Want to describe your product and audience, or run /ad-setup first?"
+- If patterns.md is empty or only has a header, ignore it silently — no flywheel data yet
+- If research.md doesn't exist, that's fine — use playbook + user input instead
 
 ## Step 1: Identify the Product
 
