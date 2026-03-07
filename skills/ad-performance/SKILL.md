@@ -7,7 +7,7 @@ description: "Ad Flywheel performance tracking and flywheel engine. Imports Meta
 
 ## Rules
 
-- `{WORKSPACE}` = the directory containing the `ad-flywheel/` folder. Search current directory first, then `~/ad-flywheel/`, `~/Program/ad-flywheel/`.
+- `{WORKSPACE}` = the directory containing the `ad-flywheel/` folder. Search the current directory. If the current directory IS `ad-flywheel/`, use it directly.
 - NEVER modify the playbook without explicit user approval
 - Handle CSV column name variations gracefully (Meta exports aren't always consistent)
 - When identifying winners, use the agency's own performance rules from playbook

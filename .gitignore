@@ -1,5 +1,7 @@
 # Agency workspace data (generated during use)
 ad-flywheel/
+test-workspace/
+test-eval/
 
 # OS files
 .DS_Store

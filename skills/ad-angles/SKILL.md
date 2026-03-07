@@ -7,7 +7,7 @@ description: "Ad Flywheel angle and hook generator. Generates 5-8 ad angles with
 
 ## Rules
 
-- `{WORKSPACE}` = the directory containing the `ad-flywheel/` folder. Search current directory first, then `~/ad-flywheel/`, `~/Program/ad-flywheel/`.
+- `{WORKSPACE}` = the directory containing the `ad-flywheel/` folder. Search the current directory. If the current directory IS `ad-flywheel/`, use it directly.
 - ALWAYS load playbook before generating (fail gracefully if no playbook exists — use defaults)
 - Generate 5-8 angles per product (never fewer than 5)
 - Each angle must target a SPECIFIC micro-avatar, not a generic audience

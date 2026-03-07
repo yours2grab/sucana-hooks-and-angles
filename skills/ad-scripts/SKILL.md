@@ -7,7 +7,7 @@ description: "Ad Flywheel script generator. Writes full ad scripts with timestam
 
 ## Rules
 
-- `{WORKSPACE}` = the directory containing the `ad-flywheel/` folder. Search current directory first, then `~/ad-flywheel/`, `~/Program/ad-flywheel/`.
+- `{WORKSPACE}` = the directory containing the `ad-flywheel/` folder. Search the current directory. If the current directory IS `ad-flywheel/`, use it directly.
 - ALWAYS load the angle before writing (don't invent angles — use what was selected)
 - Scripts must be SPECIFIC to the micro-avatar defined in the angle
 - Every spoken line must sound natural — written for speaking, not reading

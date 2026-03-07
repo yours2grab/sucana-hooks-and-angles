@@ -18,7 +18,7 @@ description: "Ad Flywheel onboarding and context enrichment. Sets up the workspa
 
 Check if the current directory IS `ad-flywheel/` (contains `config/` subdirectory or is named `ad-flywheel`). If so, use it as the workspace root — do NOT create a nested `ad-flywheel/` inside it.
 
-Otherwise, search for an existing `ad-flywheel/config/playbook.md` — first check current directory, then `~/ad-flywheel/`, `~/Program/ad-flywheel/`.
+Otherwise, search for an existing `ad-flywheel/config/playbook.md` in the current directory.
 
 - **If NO config exists** → ask: "Where do you want the ad-flywheel workspace? Default: current directory." Then proceed to Step 1.
 - **If config exists** → set `{WORKSPACE}` to the parent of the found `ad-flywheel/` dir. Skip to Step 5 (Context Enrichment Mode).
