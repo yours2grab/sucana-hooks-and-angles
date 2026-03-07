@@ -24,14 +24,19 @@ The more you use it, the smarter it gets.
 
 ## Install
 
+**Option 1: Download ZIP**
+1. Download the ZIP from GitHub and unzip it
+2. Open Terminal, `cd` into the unzipped folder
+3. Run `bash install.sh`
+
+**Option 2: Git clone**
 ```bash
-git clone <repo-url> ad-flywheel
-cd ad-flywheel
-chmod +x install.sh
-./install.sh
+git clone https://github.com/yours2grab/hooks-and-angles.git
+cd hooks-and-angles
+bash install.sh
 ```
 
-This symlinks all skills to `~/.claude/skills/`. Requires [Claude Code](https://claude.com/claude-code).
+This copies all skills to `~/.claude/skills/`. You can delete the downloaded folder after installing — the skills are already copied. Requires [Claude Code](https://claude.com/claude-code).
 
 ## Quick Start
 

@@ -1,6 +1,6 @@
 #!/bin/bash
 # Ad Flywheel — Install Script
-# Symlinks all skills to ~/.claude/skills/
+# Copies all skills to ~/.claude/skills/
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 SKILLS_DIR="$HOME/.claude/skills"
@@ -11,12 +11,13 @@ for skill_dir in "$SCRIPT_DIR"/skills/*/; do
   skill_name=$(basename "$skill_dir")
   target="$SKILLS_DIR/$skill_name"
 
-  if [ -L "$target" ]; then
-    rm "$target"
+  # Remove existing (symlink or directory)
+  if [ -L "$target" ] || [ -d "$target" ]; then
+    rm -rf "$target"
   fi
 
-  ln -s "$skill_dir" "$target"
-  echo "Linked: $skill_name -> $target"
+  cp -r "$skill_dir" "$target"
+  echo "Installed: $skill_name"
 done
 
 echo ""
@@ -26,3 +27,5 @@ echo "  /ad-angles       — Generate hooks and angles for a product"
 echo "  /ad-scripts      — Write ad scripts from selected angles"
 echo "  /ad-research     — Deep product and market research"
 echo "  /ad-performance  — Import Meta data and run the flywheel"
+echo ""
+echo "Open Claude Code in any directory and type 'ad setup' to get started."
