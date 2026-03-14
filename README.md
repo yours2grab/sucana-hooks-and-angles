@@ -125,4 +125,4 @@ You can back it up, move it, or version-control it however you want.
 
 ## Credits
 
-Built by [Virgil Brewster](https://github.com/yours2grab). Ad methodology by Victor Chazarra.
+Built by Virgil Brewster and Victor Chasaraz at [Sucana](https://sucana.ai) — AI-powered ad creative for B2B SaaS.
