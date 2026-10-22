@@ -1,6 +1,6 @@
-# Ad Flywheel — Hook & Angle Generator
+# Hooks & Angles — Ad Flywheel for Claude Code
 
-A Claude Code skill pack that generates ad hooks, angles, and scripts for any product — then uses winning ad data to continuously improve future output.
+A Claude Code skill that generates ad hooks, angles, and scripts for any product — then uses winning ad data to continuously improve future output.
 
 Built for ad agencies running Meta ads. Works with any product, any niche.
 
@@ -12,13 +12,13 @@ Research → Angles → Scripts → [Run Ads] → Performance → Winning Patter
    └──────────── flywheel feeds back ─────────────────────────┘
 ```
 
-1. **Research** a product (audience, competitors, emotional landscape)
-2. **Generate angles** (5-8 per product with hooks, emotional triggers, cognitive biases)
-3. **Write scripts** (timestamped VSL scripts with creative briefs)
-4. Run the ads on Meta
-5. **Import performance data** (CSV from Meta Ads Manager)
-6. **Extract winning patterns** (what hooks, emotions, structures win)
-7. Winning patterns automatically inform the next round of angle generation
+1. **Drop your CSV** — Meta Ads Manager export, system bootstraps everything
+2. **See what's winning** — instant analysis of your best and worst performers
+3. **Generate angles** — 5-8 new ad angles based on what's already working
+4. **Write scripts** — full production-ready scripts with visual direction
+5. Run the ads on Meta
+6. **Import new data** — drop another CSV, system updates and learns
+7. **Flywheel** — winning patterns feed back into better angles every cycle
 
 The more you use it, the smarter it gets.
 
@@ -36,38 +36,32 @@ cd hooks-and-angles
 bash install.sh
 ```
 
-This copies all skills to `~/.claude/skills/`. You can delete the downloaded folder after installing — the skills are already copied. Requires [Claude Code](https://claude.com/claude-code).
+This copies the skill to `~/.claude/skills/`. You can delete the downloaded folder after installing. Requires [Claude Code](https://claude.com/claude-code).
 
 ## Quick Start
 
 1. Open Claude Code in any folder (this is where your ad data will live)
-2. Type `ad setup` — answer 5 quick questions about your brand
-3. Type `ad angles` — get 5-8 ad angles with hooks for your product
-4. Type `ad scripts` — pick an angle, get a full production-ready script
+2. Type `ad setup` and drop your Meta Ads Manager CSV
+3. System extracts your brand, benchmarks, winners, and patterns automatically
+4. Type `generate angles` — get 5-8 new angles based on what's already working
+5. Type `write script` — pick an angle, get a full production-ready script
 
-That's it. You're generating ads.
+That's it. No questionnaire. Your data tells the story.
 
-### All Commands
+### What You Can Say
 
-| Command | What to type | What happens |
-|---------|-------------|-------------|
-| Setup | "ad setup" | 5-min onboarding questionnaire |
-| Research | "ad research" | Deep product/market research |
-| Angles | "ad angles" or "generate angles" | 5-8 angles with hooks |
-| Scripts | "ad scripts" or "write script" | Full timestamped scripts |
-| Performance | "ad performance" or "import ads" | Import CSV + run flywheel |
+Just type naturally. The skill detects what you need:
 
-You don't need to use slash commands — just type the trigger phrase naturally (e.g., "generate angles for my protein powder").
+| What you want | What to type |
+|---------------|-------------|
+| Set up / add context | "ad setup", "add context", "ingest this transcript" |
+| Research a product | "research [product name]", "product research" |
+| Generate angles | "generate angles", "hook ideas", "ad concepts" |
+| Write scripts | "write script", "VSL script", "ad copy" |
+| Import performance | "import ads", "ad performance", CSV path |
+| Run the flywheel | "run flywheel", "winning ads", "best ads" |
 
-## Skills
-
-| Skill | What It Does |
-|-------|-------------|
-| `ad-setup` | Onboards your agency. Quick questionnaire + paste any strategy docs or transcripts. Run again anytime to add more context. |
-| `ad-angles` | Generates 5-8 ad angles per product with hooks, emotional triggers, cognitive biases, and script structures. Includes angle comparison mode. |
-| `ad-scripts` | Writes full timestamped ad scripts (15s/30s/60s/90s) with visual direction and creative briefs. Human review loop for iteration. |
-| `ad-research` | Deep product research — audience, competitors, objections, emotional triggers, awareness levels. |
-| `ad-performance` | Imports Meta CSV exports, identifies winners, extracts patterns, and feeds them back into angle generation. |
+No slash commands needed — just describe what you want.
 
 ## The Playbook
 
@@ -75,14 +69,7 @@ Every agency gets a `config/playbook.md` that stores their context — brand, au
 
 The system ships with a proven ad methodology baked into the generation prompts (testing hierarchy, hook patterns, emotional triggers, script structures, scaling rules). Your playbook layers agency-specific context on top.
 
-### Adding Context Over Time
-
-Run `/ad-setup` again anytime to:
-- Paste new strategy docs or meeting transcripts
-- Add insights from client calls
-- Update your goals or audience definition
-
-The more context the system has, the better the angles.
+Say "add context" anytime to paste new strategy docs, meeting transcripts, or client notes. The more context the system has, the better the angles.
 
 ## Directory Structure
 
@@ -104,12 +91,6 @@ ad-flywheel/
 │   └── patterns.md              # Extracted winning patterns
 └── flywheel-state.md            # Dashboard with smart suggestions
 ```
-
-## Examples
-
-See the `examples/` directory for:
-- `sample-playbook.md` — Example filled-out playbook
-- `sample-csv/` — Example Meta Ads Manager export for testing
 
 ## Where Does My Data Go?
 

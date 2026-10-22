@@ -1,31 +1,32 @@
 #!/bin/bash
-# Ad Flywheel — Install Script
-# Copies all skills to ~/.claude/skills/
+# Hooks & Angles — Install Script
+# Copies the skill to ~/.claude/skills/
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 SKILLS_DIR="$HOME/.claude/skills"
+SKILL_NAME="hooks-and-angles"
 
 mkdir -p "$SKILLS_DIR"
 
-for skill_dir in "$SCRIPT_DIR"/skills/*/; do
-  skill_name=$(basename "$skill_dir")
-  target="$SKILLS_DIR/$skill_name"
-
-  # Remove existing (symlink or directory)
-  if [ -L "$target" ] || [ -d "$target" ]; then
-    rm -rf "$target"
+# Remove old individual skills if they exist (from previous versions)
+for old_skill in ad-setup ad-angles ad-scripts ad-research ad-performance; do
+  old_target="$SKILLS_DIR/$old_skill"
+  if [ -L "$old_target" ] || [ -d "$old_target" ]; then
+    rm -rf "$old_target"
+    echo "Removed old skill: $old_skill"
   fi
-
-  cp -r "$skill_dir" "$target"
-  echo "Installed: $skill_name"
 done
 
+# Install the unified skill
+target="$SKILLS_DIR/$SKILL_NAME"
+if [ -L "$target" ] || [ -d "$target" ]; then
+  rm -rf "$target"
+fi
+
+cp -r "$SCRIPT_DIR/skills/$SKILL_NAME" "$target"
+echo "Installed: $SKILL_NAME"
+
 echo ""
-echo "Ad Flywheel skills installed. Available commands:"
-echo "  /ad-setup        — Onboard a new agency or add context"
-echo "  /ad-angles       — Generate hooks and angles for a product"
-echo "  /ad-scripts      — Write ad scripts from selected angles"
-echo "  /ad-research     — Deep product and market research"
-echo "  /ad-performance  — Import Meta data and run the flywheel"
+echo "Hooks & Angles installed."
 echo ""
 echo "Open Claude Code in any directory and type 'ad setup' to get started."
